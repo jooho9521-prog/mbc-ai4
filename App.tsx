@@ -61,22 +61,22 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 pb-20">
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-4 flex items-center justify-between max-w-2xl mx-auto w-full">
+    <div className="min-h-screen bg-rose-50 text-gray-900 pb-20 transition-colors duration-500">
+      <header className="sticky top-0 z-50 bg-rose-50/80 backdrop-blur-md border-b border-rose-100 px-6 py-4 flex items-center justify-between max-w-2xl mx-auto w-full">
         <div className="flex items-center gap-2">
-          <div className="bg-indigo-600 p-2 rounded-lg">
+          <div className="bg-rose-500 p-2 rounded-lg shadow-md shadow-rose-200">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
             </svg>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-indigo-900">Commute Harmony</h1>
+          <h1 className="text-2xl font-black tracking-tight text-rose-900">PEP VIBE</h1>
         </div>
       </header>
 
       <main className="max-w-2xl mx-auto px-6 mt-8">
         <section className="mb-10 text-center">
-          <h2 className="text-3xl font-bold mb-2">오늘의 출퇴근 메이트</h2>
-          <p className="text-gray-500">지하철, 버스에서 듣기 좋은 음악을 매일 7개씩 추천해 드립니다.</p>
+          <h2 className="text-3xl font-bold mb-2 text-rose-950">오늘의 출퇴근 메이트</h2>
+          <p className="text-rose-700/70">지하철, 버스에서 듣기 좋은 음악을 매일 7개씩 추천해 드립니다.</p>
         </section>
 
         <form onSubmit={handleSubmit} className="mb-12">
@@ -86,12 +86,12 @@ const App: React.FC = () => {
               value={userTheme}
               onChange={(e) => setUserTheme(e.target.value)}
               placeholder="테마나 장르를 입력하세요 (예: 비 오는 날, 잔잔한 인디)"
-              className="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-6 py-4 pr-32 focus:outline-none focus:border-indigo-500 focus:bg-white transition-all text-lg shadow-sm"
+              className="w-full bg-white/60 border-2 border-rose-100 rounded-2xl px-6 py-4 pr-32 focus:outline-none focus:border-rose-400 focus:bg-white transition-all text-lg shadow-sm"
             />
             <button
               type="submit"
               disabled={status === AppState.LOADING}
-              className="absolute right-2 top-2 bottom-2 bg-indigo-600 text-white px-6 rounded-xl font-bold hover:bg-indigo-700 disabled:bg-gray-300 transition-colors shadow-lg shadow-indigo-200"
+              className="absolute right-2 top-2 bottom-2 bg-rose-500 text-white px-6 rounded-xl font-bold hover:bg-rose-600 disabled:bg-gray-300 transition-colors shadow-lg shadow-rose-200"
             >
               {status === AppState.LOADING ? '추천 중...' : '추천받기'}
             </button>
@@ -100,18 +100,18 @@ const App: React.FC = () => {
 
         {status === AppState.LOADING && (
           <div className="flex flex-col items-center justify-center py-20 space-y-4">
-            <div className="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
-            <p className="text-indigo-600 font-semibold animate-pulse">최고의 노래들을 찾고 있어요...</p>
+            <div className="w-12 h-12 border-4 border-rose-200 border-t-rose-500 rounded-full animate-spin"></div>
+            <p className="text-rose-600 font-semibold animate-pulse">최고의 노래들을 찾고 있어요...</p>
           </div>
         )}
 
         {status === AppState.ERROR && (
-          <div className="bg-red-50 border border-red-100 text-red-600 p-8 rounded-3xl text-center animate-fadeIn shadow-inner">
-            <p className="font-bold mb-3 text-xl">문제가 발생했습니다</p>
-            <p className="mb-6 text-red-500 text-sm">{error}</p>
+          <div className="bg-white/80 border border-red-100 text-red-600 p-8 rounded-3xl text-center animate-fadeIn shadow-xl shadow-rose-100">
+            <p className="font-bold mb-3 text-xl text-rose-800">문제가 발생했습니다</p>
+            <p className="mb-6 text-rose-500 text-sm">{error}</p>
             <button 
               onClick={handleRefresh}
-              className="bg-red-600 text-white px-10 py-3 rounded-full font-bold hover:bg-red-700 transition-all active:scale-95 shadow-lg shadow-red-200"
+              className="bg-rose-500 text-white px-10 py-3 rounded-full font-bold hover:bg-rose-600 transition-all active:scale-95 shadow-lg shadow-rose-200"
             >
               다시 시도하기
             </button>
@@ -121,12 +121,12 @@ const App: React.FC = () => {
         {status === AppState.SUCCESS && recommendations && (
           <div className="animate-fadeIn">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-black text-gray-900 leading-tight">
+              <h3 className="text-2xl font-black text-rose-900 leading-tight">
                  {recommendations.dailyThemeTitle || activeTheme}
               </h3>
               <button 
                 onClick={handleRefresh}
-                className="flex items-center gap-2 bg-gray-50 hover:bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm font-bold transition-colors border border-gray-100"
+                className="flex items-center gap-2 bg-white/50 hover:bg-white text-rose-600 px-4 py-2 rounded-full text-sm font-bold transition-colors border border-rose-100 shadow-sm"
               >
                 재추천
               </button>
@@ -138,17 +138,17 @@ const App: React.FC = () => {
               ))}
             </div>
 
-            <div className="mt-12 p-8 bg-indigo-50 rounded-3xl text-center">
-              <p className="text-indigo-900 font-bold mb-2">추천 곡 구성</p>
+            <div className="mt-12 p-8 bg-rose-100/50 rounded-3xl text-center border border-rose-200">
+              <p className="text-rose-900 font-bold mb-2">추천 곡 구성</p>
               <div className="flex justify-center gap-8">
                 <div className="flex flex-col">
-                  <span className="text-3xl font-black text-indigo-600">5</span>
-                  <span className="text-xs text-indigo-400 font-bold uppercase">Korean</span>
+                  <span className="text-3xl font-black text-rose-600">5</span>
+                  <span className="text-xs text-rose-400 font-bold uppercase">Korean</span>
                 </div>
-                <div className="w-px h-10 bg-indigo-200 mt-2"></div>
+                <div className="w-px h-10 bg-rose-200 mt-2"></div>
                 <div className="flex flex-col">
-                  <span className="text-3xl font-black text-indigo-600">2</span>
-                  <span className="text-xs text-indigo-400 font-bold uppercase">Intl</span>
+                  <span className="text-3xl font-black text-rose-600">2</span>
+                  <span className="text-xs text-rose-400 font-bold uppercase">Intl</span>
                 </div>
               </div>
             </div>
@@ -156,8 +156,8 @@ const App: React.FC = () => {
         )}
       </main>
 
-      <footer className="mt-20 border-t border-gray-100 py-10 text-center text-gray-400 text-sm">
-        <p>© 2024 Commute Harmony. Powered by Gemini API.</p>
+      <footer className="mt-20 border-t border-rose-100 py-10 text-center text-rose-300 text-sm">
+        <p>© 2024 PEP VIBE. Powered by Gemini API.</p>
       </footer>
 
       <style>{`

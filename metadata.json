@@ -1,5 +1,5 @@
 {
-  "name": "Commute Harmony",
+  "name": "오늘의 추천곡",
   "description": "Daily curated music recommendations for your subway or bus commute. Get 7 personalized tracks based on your mood or theme, featuring a curated mix of Korean and international hits with direct YouTube links.",
   "requestFramePermissions": []
 }
